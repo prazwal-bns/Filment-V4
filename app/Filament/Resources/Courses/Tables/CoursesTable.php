@@ -19,9 +19,11 @@ class CoursesTable
                     ->searchable(),
                 TextColumn::make('credit_hours')
                     ->numeric()
+                    ->badge()
                     ->sortable(),
-                TextColumn::make('department_id')
-                    ->numeric()
+                TextColumn::make('department.name')
+                    ->badge()
+                    ->color('secondary')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
