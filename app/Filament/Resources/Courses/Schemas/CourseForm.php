@@ -2,8 +2,11 @@
 
 namespace App\Filament\Resources\Courses\Schemas;
 
-use Filament\Forms\Components\TextInput;
+use App\Models\Department;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class CourseForm
@@ -12,16 +15,20 @@ class CourseForm
     {
         return $schema
             ->components([
-                TextInput::make('course_title')
-                    ->required(),
-                TextInput::make('credit_hours')
-                    ->required()
-                    ->numeric(),
-                Textarea::make('description')
+                Section::make('Course Information')
+                    ->schema([
+                        TextInput::make('course_title')
+                            ->required(),
+                        TextInput::make('credit_hours')
+                            ->required()
+                            ->numeric(),
+                        Textarea::make('description')
+                            ->columnSpanFull(),
+                        Select::make('department_id')
+                            ->relationship('department', 'name')
+                            ->required(),
+                    ])
                     ->columnSpanFull(),
-                TextInput::make('department_id')
-                    ->required()
-                    ->numeric(),
             ]);
     }
 }
