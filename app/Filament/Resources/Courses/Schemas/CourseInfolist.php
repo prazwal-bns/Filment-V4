@@ -11,7 +11,8 @@ class CourseInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('course_title'),
+                TextEntry::make('course_title')
+                    ->label('Course Title'),
                 TextEntry::make('credit_hours')
                     ->numeric(),
                 TextEntry::make('department_id')
@@ -20,6 +21,7 @@ class CourseInfolist
                     ->dateTime(),
                 TextEntry::make('updated_at')
                     ->dateTime(),
+                TextEntry::make('description'),
             ]);
     }
 }
