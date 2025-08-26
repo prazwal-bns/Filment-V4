@@ -1,6 +1,6 @@
 <?php
 
-test('smoke test', function(){
+test('can access all pages', function(){
     $plainPassword = 'password';
 
     $user = [
@@ -22,9 +22,13 @@ test('smoke test', function(){
         '/admin/courses',
     ];
 
-    foreach($routes as $route){
-        $response = visit($route);
+    // old way of testing
+    // foreach($routes as $route){
+    //     $response = visit($route);
 
-        $response->assertNoJavascriptErrors();
-    }
+    //     $response->assertNoJavascriptErrors();
+    // }
+
+    visit($routes)
+        ->assertNoSmoke();
 });
