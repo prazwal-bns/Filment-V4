@@ -15,10 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
 
         // Call seeders in order of dependencies
         $this->call([
@@ -26,6 +22,7 @@ class DatabaseSeeder extends Seeder
             TeacherSeeder::class,
             CourseSeeder::class,
             StudentSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
